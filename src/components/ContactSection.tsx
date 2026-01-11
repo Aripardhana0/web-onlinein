@@ -20,7 +20,7 @@ export function ContactSection() {
                     transition={{ duration: 0.5 }}
                     className="flex-shrink-0"
                 >
-                    <h2 className="text-[8vw] lg:text-[90px] font-black uppercase leading-none mb-6 tracking-tight">
+                    <h2 className="text-4xl md:text-[8vw] lg:text-[90px] font-black uppercase leading-none mb-6 tracking-tight">
                         Let's Build <br /> Your <span className="text-[#0a0a0f]">Website</span>
                     </h2>
 

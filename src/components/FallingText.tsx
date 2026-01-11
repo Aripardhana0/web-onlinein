@@ -31,6 +31,19 @@ export function FallingText() {
         const width = sceneRef.current.clientWidth;
         const height = sceneRef.current.clientHeight;
 
+        // Dynamic Scaling based on width
+        // Base width 1600px -> Scale 1.0
+        // Mobile 400px -> Scale 0.25 (maybe a bit larger for readability, e.g. 0.35 minimum)
+        let scale = width / 1600;
+        if (width < 768) scale = width / 800; // More aggressive scaling on mobile but kept readable
+        if (width < 480) scale = width / 600; // Mobile Portrait
+
+        // Clamp scale to reasonable limits
+        scale = Math.max(0.4, Math.min(scale, 1.2));
+
+        const baseFontSize = 270;
+        const fontSize = Math.round(baseFontSize * scale);
+
         // Create renderer
         const render = Render.create({
             element: sceneRef.current,
@@ -68,38 +81,39 @@ export function FallingText() {
 
         letters.forEach((letter, i) => {
             // Randomize start position slightly
-            const x = (width / 2) + ((Math.random() - 0.5) * 250);
-            const y = -200 - (i * 200); // Stagger drop
+            const x = (width / 2) + ((Math.random() - 0.5) * (width * 0.5)); // constrain random X to center
+            const y = -200 - (i * 200 * scale); // Stagger drop scaled
 
             // Define letter-specific physics dimensions to minimize gaps
-            // Font: 900 270px Inter (Updated)
-            // Scaled up by ~10% from 250px
-            let letterWidth = 220;
-            let radius = 30;
+            // Base values from previous code
+            let baseWidth = 220;
+            let baseRadius = 30;
 
             switch (letter) {
                 case "I":
-                    letterWidth = 80; // Scaled up
-                    radius = 20;
+                    baseWidth = 80;
+                    baseRadius = 20;
                     break;
                 case "L":
-                    letterWidth = 170;
+                    baseWidth = 170;
                     break;
                 case "E":
-                    letterWidth = 190;
+                    baseWidth = 190;
                     break;
                 case "O":
-                    letterWidth = 240;
-                    radius = 110;
+                    baseWidth = 240;
+                    baseRadius = 110;
                     break;
                 case "N":
-                    letterWidth = 220;
+                    baseWidth = 220;
                     break;
                 default:
-                    letterWidth = 220;
+                    baseWidth = 220;
             }
 
-            const letterHeight = 230; // Scaled up
+            const letterWidth = baseWidth * scale;
+            const letterHeight = 230 * scale;
+            const radius = baseRadius * scale;
 
             const body = Bodies.rectangle(x, y, letterWidth, letterHeight, {
                 restitution: 0.5, // Reduced bounciness slightly for stack stability
@@ -134,7 +148,7 @@ export function FallingText() {
         // Custom Rendering for Text
         Events.on(render, "afterRender", () => {
             const context = render.context;
-            context.font = "900 270px Inter, sans-serif";
+            context.font = `900 ${fontSize}px Inter, sans-serif`;
             context.textAlign = "center";
             context.textBaseline = "middle";
             context.fillStyle = "#ffffff"; // White Text
@@ -146,7 +160,7 @@ export function FallingText() {
                 context.save();
                 context.translate(x, y);
                 context.rotate(body.angle);
-                context.fillText(letter, 0, 10); // Slight offset for baseline
+                context.fillText(letter, 0, 10 * scale); // Slight offset for baseline scaled
                 context.restore();
             });
         });
@@ -159,6 +173,9 @@ export function FallingText() {
         Runner.run(runner, engine);
 
         // Resize Handler
+        // For simplicity, we just reload the page on resize to recalculate physics bodies properly
+        // Or we could just update boundaries and let the letters stay same size (might look weird if resizing from desktop to mobile)
+        // A full rebuild is complex here. Let's just update boundaries for small resizes.
         const handleResize = () => {
             if (!renderRef.current || !sceneRef.current) return;
             const newWidth = sceneRef.current.clientWidth;
@@ -170,7 +187,10 @@ export function FallingText() {
             // Reposition boundaries
             Matter.Body.setPosition(ground, { x: newWidth / 2, y: newHeight + 60 });
             Matter.Body.setPosition(rightWall, { x: newWidth + 60, y: newHeight / 2 });
-            // Left wall stays same
+            Matter.Body.setPosition(leftWall, { x: -60, y: newHeight / 2 });
+
+            // Note: We are NOT resizing the text bodies here.
+            // Truly responsive physics usually requires re-initialization.
         };
         window.addEventListener("resize", handleResize);
 

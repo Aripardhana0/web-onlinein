@@ -21,7 +21,7 @@ export function WhyOnlinein() {
                     transition={{ duration: 0.8 }}
                 >
                     {/* Relaxed letter spacing */}
-                    <h2 className="text-[8vw] lg:text-[80px] font-black uppercase leading-[1] mb-8 tracking-normal">
+                    <h2 className="text-4xl md:text-[8vw] lg:text-[80px] font-black uppercase leading-[1] mb-8 tracking-normal">
                         Why Choose <br /> <span className="text-white">Onlinein?</span>
                     </h2>
 

@@ -22,7 +22,7 @@ export function WorkProcess() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-[10vw] lg:text-[80px] font-black uppercase leading-none mb-6">
+                    <h2 className="text-4xl md:text-[10vw] lg:text-[80px] font-black uppercase leading-none mb-6">
                         How It <span className="text-white">Works</span>
                     </h2>
                     <p className="text-xl opacity-90">Simple steps to get your brand online.</p>

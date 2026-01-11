@@ -36,7 +36,7 @@ export function Services() {
                     viewport={{ once: true }}
                     className="mb-12 shrink-0"
                 >
-                    <h2 className="text-[8vw] lg:text-[100px] font-black uppercase leading-none mb-6 flex items-center gap-4">
+                    <h2 className="text-4xl md:text-[8vw] lg:text-[100px] font-black uppercase leading-none mb-6 flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
                         What We <span className="text-[#0a0a0f]">Do Best</span>
                     </h2>
                     <p className="text-xl lg:text-2xl max-w-3xl leading-relaxed opacity-90">

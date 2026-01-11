@@ -29,7 +29,7 @@ export function AboutOnlinein() {
                             ✦
                         </div>
 
-                        <h2 className="text-[10vw] lg:text-[100px] leading-[0.9] font-black uppercase mb-8 relative z-10">
+                        <h2 className="text-5xl md:text-[10vw] lg:text-[100px] leading-[0.9] font-black uppercase mb-8 relative z-10">
                             Who <br /> <span className="text-[#0a0a0f]">We Are</span>
                         </h2>
 
