@@ -21,11 +21,11 @@ export function ContactSection() {
                     className="flex-shrink-0"
                 >
                     <h2 className="text-[8vw] lg:text-[90px] font-black uppercase leading-none mb-6 tracking-tight">
-                        Let's Build <br /> Your <span className="text-[#0a0a0f]">Website</span>
+                        Start <br /> Automating <span className="text-[#0a0a0f]">Today</span>
                     </h2>
 
                     <p className="text-xl lg:text-2xl max-w-xl mx-auto font-medium opacity-90">
-                        Ready to bring your business online?
+                        Don't let manual work slow you down. Let's build your system.
                     </p>
                 </motion.div>
 

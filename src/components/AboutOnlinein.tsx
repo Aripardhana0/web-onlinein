@@ -34,13 +34,13 @@ export function AboutOnlinein() {
                         </h2>
 
                         <p className="text-xl lg:text-2xl font-medium leading-relaxed max-w-lg mb-8 opacity-90">
-                            Onlinein is a digital IT service powered by young innovators who love creating modern websites that actually work for your business.
+                            Onlinein is a digital automation agency. We bridge the gap between <strong>creative branding</strong> and <strong>workflow efficiency</strong>.
                         </p>
 
                         <p className="text-lg leading-relaxed max-w-lg mb-8 opacity-80">
-                            We believe websites shouldn’t look boring or outdated. That’s why every project we build is trendy, creative, and designed to match today’s digital lifestyle.
+                            Your business needs to look good <em>and</em> run smoothly. We design stunning websites that define your brand, then we implement AI systems to handle the heavy lifting.
                             <br /><br />
-                            <strong>Simple design, smart strategy, real results.</strong>
+                            <strong>Pro Design. Smart Automation. Real Results.</strong>
                         </p>
 
                         <motion.div

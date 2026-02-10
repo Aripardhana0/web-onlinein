@@ -16,8 +16,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Onlinein - Turn Your Business Online",
-  description: "Modern digital IT service for innovative websites and branding.",
+  title: "Onlinein | Modern Web Design & AI Automation Agency",
+  description: "We build stunning high-converting websites and automate your business workflows with AI. The modern way to grow your brand online.",
+  keywords: "Web Design, User Interface, AI Automation, Workflow Automation, Chatbots, Digital Agency, Branding",
 };
 
 export default function RootLayout({

@@ -79,7 +79,7 @@ export function StickySection({ children, className, id, zIndex, skew = "none" }
         <motion.div
             ref={ref}
             id={id}
-            className={cn("sticky top-0 w-full", className)}
+            className={cn("relative md:sticky md:top-0 w-full", className)}
             style={{
                 zIndex,
                 scale,
