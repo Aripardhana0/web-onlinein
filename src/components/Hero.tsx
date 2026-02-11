@@ -46,7 +46,7 @@ export function Hero() {
                         transition={{ delay: 0.4, type: "spring" }}
                         className="text-[12vw] md:text-[80px] lg:text-[90px] font-black leading-[1] tracking-[0.05em] uppercase mb-8 w-full"
                     >
-                        Build Your <br /> Brand. <br /> <span className="text-white">Automate Your Growth.</span>
+                        Go Online. <br /> <span className="text-white">Automate Your Business.</span>
                     </motion.h1>
 
                     {/* Subheadline - Widened */}
@@ -56,7 +56,7 @@ export function Hero() {
                         transition={{ delay: 0.6 }}
                         className="text-base md:text-xl md:max-w-xl mb-10 leading-relaxed font-medium"
                     >
-                        Onlinein combines <strong>modern web design</strong> with <strong>smart AI automation</strong>. We build websites that impress and systems that run your business 24/7.
+                        We build high-converting websites and AI systems that run your business 24/7.
                     </motion.p>
 
                     {/* CTA Buttons */}

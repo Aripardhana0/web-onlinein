@@ -4,33 +4,21 @@ import { motion } from "motion/react";
 
 const services = [
     {
-        title: "Landing Page",
+        title: "Modern Website",
         tag: "High Conversion.",
-        desc: "Don't just inform—convert. We build landing pages psychologically designed to turn visitors into buyers.",
+        desc: "Stunning design that converts visitors into customers. Fast, secure, and built to sell.",
         icon: "🚀"
-    },
-    {
-        title: "Company Profile",
-        tag: "Premium Brand.",
-        desc: "Look bigger than you are. A world-class digital presence that builds instant trust with big clients.",
-        icon: "🏢"
-    },
-    {
-        title: "E-Commerce",
-        tag: "Sales Machine.",
-        desc: "A custom online store that runs smoothly, looks stunning, and makes selling effortless.",
-        icon: "🛍️"
     },
     {
         title: "Workflow Automation",
         tag: "Cut Costs.",
-        desc: "Eliminate manual data entry. We connect your apps so your business runs on auto-pilot.",
+        desc: "Stop manual work. We connect your apps to run your business on auto-pilot.",
         icon: "⚙️"
     },
     {
         title: "AI Chatbot",
         tag: "24/7 Sales Agent.",
-        desc: "An AI that answers questions, books appointments, and closes deals while you sleep.",
+        desc: "Your 24/7 sales agent. Answer queries, book meetings, and sell while you sleep.",
         icon: "🤖"
     },
 ];

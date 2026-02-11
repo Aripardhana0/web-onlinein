@@ -21,7 +21,7 @@ export function ContactSection() {
                     className="flex-shrink-0"
                 >
                     <h2 className="text-[8vw] lg:text-[90px] font-black uppercase leading-none mb-6 tracking-tight">
-                        Start <br /> Automating <span className="text-[#0a0a0f]">Today</span>
+                        Go Online. <br /> Start <span className="text-[#0a0a0f]">Automating.</span>
                     </h2>
 
                     <p className="text-xl lg:text-2xl max-w-xl mx-auto font-medium opacity-90">

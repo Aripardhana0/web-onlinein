@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { MessageCircle, X, Send } from "lucide-react";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface Message {
     id: string;
@@ -18,8 +20,9 @@ export function ChatWidget() {
     const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    // REPLACE THIS WITH YOUR N8N WEBHOOK URL
-    const WEBHOOK_URL = "https://your-n8n-instance.com/webhook/chat";
+    // We use a Local API Route to proxy the request to n8n
+    // This avoids CORS errors from the browser
+    const WEBHOOK_URL = "/api/chat";
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -45,27 +48,35 @@ export function ChatWidget() {
         setStatus("sending");
 
         try {
+            let botText = "Thanks for reaching out! We'll get back to you shortly.";
+
             // Attempt to send to webhook
-            try {
-                await fetch(WEBHOOK_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        message: newUserMsg.text,
-                        timestamp: newUserMsg.timestamp.toISOString(),
-                        source: "Onlinein Website Chat"
-                    }),
-                });
-            } catch (netError) {
-                console.warn("Webhook failed (expected in dev without real URL):", netError);
+            const response = await fetch(WEBHOOK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    message: newUserMsg.text,
+                    timestamp: newUserMsg.timestamp.toISOString(),
+                    source: "Onlinein Website Chat"
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if (data.text) {
+                    botText = data.text;
+                }
+            } else {
+                console.warn("API Error:", response.status);
             }
 
-            // Simulate delay for UX
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            // Simulate small delay for natural feel if response was too fast
+            // await new Promise(resolve => setTimeout(resolve, 500)); 
+            // Actually, n8n takes time, so we often don't need extra delay.
 
             const botMsg: Message = {
                 id: (Date.now() + 1).toString(),
-                text: "Thanks for reaching out! We'll get back to you shortly.",
+                text: botText,
                 sender: 'bot',
                 timestamp: new Date()
             };
@@ -80,7 +91,7 @@ export function ChatWidget() {
             // Add error message as a system note or bot msg
             setMessages(prev => [...prev, {
                 id: Date.now().toString(),
-                text: "Sorry, something went wrong. Please try again.",
+                text: "Sorry, I couldn't reach the server. Please try again later.",
                 sender: 'bot',
                 timestamp: new Date()
             }]);
@@ -122,12 +133,35 @@ export function ChatWidget() {
                                             className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                                         >
                                             <div
-                                                className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.sender === 'user'
+                                                // Increased max-width to 92% for fuller look
+                                                className={`max-w-[92%] p-3 rounded-2xl text-sm ${msg.sender === 'user'
                                                     ? 'bg-[#F4793A] text-white rounded-br-none'
                                                     : 'bg-white border border-gray-100 shadow-sm text-gray-800 rounded-bl-none'
                                                     }`}
                                             >
-                                                {msg.text}
+                                                {msg.sender === 'user' ? (
+                                                    // User messages are usually just text, but we can markdown them too if we want.
+                                                    // Keeping simple text for user to match input exactly is often safer/cleaner.
+                                                    <p className="whitespace-pre-wrap">{msg.text}</p>
+                                                ) : (
+                                                    // Bot messages get full Markdown rendering
+                                                    <div className="prose prose-sm max-w-none prose-p:leading-relaxed prose-pre:bg-gray-100 prose-pre:text-gray-800 prose-ul:list-disc prose-ul:pl-4 prose-ol:list-decimal prose-ol:pl-4 prose-a:text-blue-500 prose-a:underline">
+                                                        <ReactMarkdown
+                                                            remarkPlugins={[remarkGfm]}
+                                                            components={{
+                                                                // Removed 'node' destructuring to avoid 'any' type error
+                                                                p: ({ ...props }) => <p className="mb-2 last:mb-0" {...props} />,
+                                                                ul: ({ ...props }) => <ul className="mb-2 last:mb-0 list-disc pl-4" {...props} />,
+                                                                ol: ({ ...props }) => <ol className="mb-2 last:mb-0 list-decimal pl-4" {...props} />,
+                                                                li: ({ ...props }) => <li className="mb-0.5" {...props} />,
+                                                                strong: ({ ...props }) => <span className="font-bold" {...props} />,
+                                                                a: ({ ...props }) => <a target="_blank" rel="noopener noreferrer" className="underline font-medium hover:opacity-80 transition-opacity" {...props} />
+                                                            }}
+                                                        >
+                                                            {msg.text}
+                                                        </ReactMarkdown>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                     ))
