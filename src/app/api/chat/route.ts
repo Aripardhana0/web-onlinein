@@ -4,8 +4,16 @@ export async function POST(request: Request) {
     try {
         const body = await request.json();
 
-        // The n8n Webhook URL provided by the user
-        const N8N_WEBHOOK_URL = "https://n8n.qti.co.id/webhook/887dcf38-defb-4249-8d73-8119ccde4a27";
+        // The n8n Webhook URL provided by the user (now from environment variable)
+        const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL;
+
+        if (!N8N_WEBHOOK_URL) {
+            console.error("Error: N8N_WEBHOOK_URL is not defined in environment variables.");
+            return NextResponse.json(
+                { error: "Server Configuration Error: Missing Webhook URL" },
+                { status: 500 }
+            );
+        }
 
         // Forward the request to n8n from the SERVER (bypasses CORS)
         const response = await fetch(N8N_WEBHOOK_URL, {
