@@ -4,10 +4,10 @@ import { motion } from "motion/react";
 import { MessageSquare, PenTool, CheckCircle, Rocket } from "lucide-react";
 
 const steps = [
-    { id: 1, title: "Tell Us the Goal", desc: "Share your vision & pain points", icon: MessageSquare },
-    { id: 2, title: "We Build & Automate", desc: "Design + AI Workflow implementation", icon: PenTool },
-    { id: 3, title: "Review & Optimize", desc: "Fine-tuning for maximum efficiency", icon: CheckCircle },
-    { id: 4, title: "Launch & Relax", desc: "Your system runs on auto-pilot", icon: Rocket },
+    { id: 1, title: "Share Your Vision", desc: "Tell us your goals and pain points", icon: MessageSquare },
+    { id: 2, title: "We Build It", desc: "High-impact design + AI workflows", icon: PenTool },
+    { id: 3, title: "Optimize & Test", desc: "Fine-tuned for peak performance", icon: CheckCircle },
+    { id: 4, title: "Launch & Scale", desc: "Your system runs on auto-pilot", icon: Rocket },
 ];
 
 export function WorkProcess() {
@@ -25,7 +25,7 @@ export function WorkProcess() {
                     <h2 className="text-[10vw] lg:text-[80px] font-black uppercase leading-none mb-6">
                         How It <span className="text-white">Works</span>
                     </h2>
-                    <p className="text-xl opacity-90">Simple steps to get your brand online.</p>
+                    <p className="text-xl opacity-90">From idea to fully automated — in 4 simple steps</p>
                 </motion.div>
 
                 {/* Mobile: Horizontal Scroll | Desktop: Grid */}

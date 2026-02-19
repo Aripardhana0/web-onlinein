@@ -27,11 +27,11 @@ export function WhyOnlinein() {
 
                     <div className="space-y-6">
                         {[
-                            "Stunning, modern web design that stands out.",
-                            "Automation that saves you 20+ hours/week.",
-                            "Strong brand identity tailored to your audience.",
-                            "Fast execution. No endless meetings.",
-                            "Scalable systems that grow with you."
+                            "Web design that converts visitors into customers",
+                            "Automation that saves you 20+ hours every week",
+                            "AI chatbots that handle leads while you sleep",
+                            "Fast execution — no endless meetings",
+                            "Scalable systems that grow with your business"
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
@@ -53,11 +53,11 @@ export function WhyOnlinein() {
                 {/* Card Deck (Fan Effect) - Bottom on Mobile */}
                 <div className="relative h-[400px] md:h-[500px] perspective-[1000px] flex items-center justify-center order-2 lg:order-2 mt-10 lg:mt-0">
                     {[
-                        { icon: Zap, color: "text-orange-500", bg: "bg-orange-100", title: "Fast", desc: "Speed of culture" },
-                        { icon: Smartphone, color: "text-emerald-500", bg: "bg-emerald-100", title: "Mobile", desc: "Optimized Layout" },
-                        { icon: Heart, color: "text-pink-500", bg: "bg-pink-100", title: "Passion", desc: "Made with love" },
-                        { icon: Shield, color: "text-blue-500", bg: "bg-blue-100", title: "Secure", desc: "Best practices" },
-                        { icon: Layers, color: "text-purple-500", bg: "bg-purple-100", title: "Scale", desc: "Ready to grow" },
+                        { icon: Zap, color: "text-orange-500", bg: "bg-orange-100", title: "Fast", desc: "Built for speed" },
+                        { icon: Smartphone, color: "text-emerald-500", bg: "bg-emerald-100", title: "Mobile", desc: "Responsive first" },
+                        { icon: Heart, color: "text-pink-500", bg: "bg-pink-100", title: "Crafted", desc: "Pixel-perfect" },
+                        { icon: Shield, color: "text-blue-500", bg: "bg-blue-100", title: "Secure", desc: "Industry standard" },
+                        { icon: Layers, color: "text-purple-500", bg: "bg-purple-100", title: "Scale", desc: "Grows with you" },
                     ].map((card, i) => {
                         // Fan Logic: Wider spread (-30deg to +30deg)
                         const rotation = -30 + (i * 15);

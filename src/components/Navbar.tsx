@@ -26,9 +26,10 @@ export function Navbar() {
                 second: "2-digit",
                 hour12: false
             });
-            // Approximate timezone check (e.g. Jakarta is GMT+7)
-            const timeZone = "JKT";
-            setTime(`${timeString} ${timeZone}`);
+            // Detect timezone abbreviation dynamically from user's browser
+            const tzParts = new Intl.DateTimeFormat("en", { timeZoneName: "short" }).formatToParts(now);
+            const tzAbbr = (tzParts.find(p => p.type === "timeZoneName")?.value || "UTC").replace("GMT", "UTC");
+            setTime(`${timeString} ${tzAbbr}`);
         };
 
         updateTime();
@@ -59,7 +60,7 @@ export function Navbar() {
         }
     };
 
-    const navLinks = ["About", "Services", "Why Onlinein?"];
+    const navLinks = ["About", "Services", "Process", "Why Us"];
 
     return (
         <>
@@ -87,7 +88,8 @@ export function Navbar() {
                         {navLinks.map((item) => {
                             let targetHref = `#${item.toLowerCase().replace(/[\s\?]/g, "-")}`;
                             if (item === "About") targetHref = "#about-onlinein";
-                            if (item === "Why Onlinein?") targetHref = "#why-onlinein";
+                            if (item === "Process") targetHref = "#work-process";
+                            if (item === "Why Us") targetHref = "#why-onlinein";
 
                             return (
                                 <Link
@@ -146,7 +148,8 @@ export function Navbar() {
                         {navLinks.map((item) => {
                             let targetHref = `#${item.toLowerCase().replace(/[\s\?]/g, "-")}`;
                             if (item === "About") targetHref = "#about-onlinein";
-                            if (item === "Why Onlinein?") targetHref = "#why-onlinein";
+                            if (item === "Process") targetHref = "#work-process";
+                            if (item === "Why Us") targetHref = "#why-onlinein";
 
                             return (
                                 <Link

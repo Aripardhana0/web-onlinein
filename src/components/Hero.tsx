@@ -44,9 +44,9 @@ export function Hero() {
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4, type: "spring" }}
-                        className="text-[12vw] md:text-[80px] lg:text-[90px] font-black leading-[1] tracking-[0.05em] uppercase mb-8 w-full"
+                        className="text-[10vw] md:text-[70px] lg:text-[80px] font-black leading-[1.05] tracking-[0.02em] uppercase mb-8 w-full"
                     >
-                        Go Online. <br /> <span className="text-white">Automate Your Business.</span>
+                        Go Online & <br /> <span className="text-white">Automate Your Business</span>
                     </motion.h1>
 
                     {/* Subheadline - Widened */}

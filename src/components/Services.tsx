@@ -1,25 +1,26 @@
 "use client";
 
 import { motion } from "motion/react";
+import { Monitor, Cpu, Bot } from "lucide-react";
 
 const services = [
     {
-        title: "Modern Website",
-        tag: "High Conversion.",
-        desc: "Stunning design that converts visitors into customers. Fast, secure, and built to sell.",
-        icon: "🚀"
+        title: "High-Convert Website",
+        tag: "Go Online.",
+        desc: "Don't just launch a site. Launch a sales engine. Fast, sleek, and built to turn visitors into buyers.",
+        icon: <Monitor className="w-full h-full p-2" />
     },
     {
-        title: "Workflow Automation",
+        title: "Business Automation",
         tag: "Cut Costs.",
-        desc: "Stop manual work. We connect your apps to run your business on auto-pilot.",
-        icon: "⚙️"
+        desc: "Eliminate manual data entry. We connect your apps to run your business on auto-pilot 24/7.",
+        icon: <Cpu className="w-full h-full p-2" />
     },
     {
-        title: "AI Chatbot",
-        tag: "24/7 Sales Agent.",
-        desc: "Your 24/7 sales agent. Answer queries, book meetings, and sell while you sleep.",
-        icon: "🤖"
+        title: "AI Sales Agents",
+        tag: "Scale Up.",
+        desc: "Never miss a lead. Our intelligent chatbots answer queries, book meetings, and sell while you sleep.",
+        icon: <Bot className="w-full h-full p-2" />
     },
 ];
 
@@ -37,11 +38,10 @@ export function Services() {
                     className="mb-8 md:mb-16 shrink-0"
                 >
                     <h2 className="text-[10vw] lg:text-[100px] font-black uppercase leading-[0.9] mb-6 flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-                        Services & <span className="text-[#0a0a0f]">Automation</span>
+                        Our <span className="text-[#0a0a0f]">Expertise</span>
                     </h2>
                     <p className="text-xl lg:text-2xl max-w-3xl leading-relaxed opacity-90">
-                        We blend stunning <strong>creative design</strong> with powerful <strong>AI automation</strong>.
-                        Get a website that looks amazing, and a system that works efficiently.
+                        Stop trading time for money. We help you <strong>Go Online & Automate</strong> your business operations.
                     </p>
                 </motion.div>
 
@@ -56,7 +56,7 @@ export function Services() {
                             transition={{ delay: i * 0.1, type: "spring", stiffness: 50 }}
                             className="group flex flex-col items-start gap-4 p-6 lg:p-8 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors min-w-[85vw] md:min-w-0 snap-center"
                         >
-                            <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-3xl shadow-inner shrink-0 mb-2">
+                            <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white shadow-inner shrink-0 mb-2">
                                 {service.icon}
                             </div>
                             <div className="flex-1 w-full text-left">
