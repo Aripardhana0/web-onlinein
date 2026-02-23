@@ -12,26 +12,26 @@ export function WhyOnlinein() {
 
             <div className="container mx-auto px-4 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
 
-                {/* Text */}
+                {/* Text - Top on Mobile */}
                 <motion.div
-                    className="order-2 lg:order-1"
+                    className="order-1 lg:order-1"
                     initial={{ opacity: 0, x: -40 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
                     {/* Relaxed letter spacing */}
-                    <h2 className="text-[8vw] lg:text-[80px] font-black uppercase leading-[1] mb-8 tracking-normal">
+                    <h2 className="text-[10vw] lg:text-[80px] font-black uppercase leading-[1] mb-8 tracking-normal">
                         Why Choose <br /> <span className="text-white">Onlinein?</span>
                     </h2>
 
                     <div className="space-y-6">
                         {[
-                            "Built by young creatives who understand trends",
-                            "Modern, clean, and Gen-Z friendly design",
-                            "Fast development & responsive support",
-                            "Mobile-first & user-focused",
-                            "Not just websites — digital experiences"
+                            "Web design that converts visitors into customers",
+                            "Automation that saves you 20+ hours every week",
+                            "AI chatbots that handle leads while you sleep",
+                            "Fast execution — no endless meetings",
+                            "Scalable systems that grow with your business"
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
@@ -50,30 +50,38 @@ export function WhyOnlinein() {
                     </div>
                 </motion.div>
 
-                {/* Card Deck (Fan Effect) - Right/Order-2 */}
-                <div className="relative h-[500px] perspective-[1000px] flex items-center justify-center order-1 lg:order-2">
+                {/* Card Deck (Fan Effect) - Bottom on Mobile */}
+                <div className="relative h-[400px] md:h-[500px] perspective-[1000px] flex items-center justify-center order-2 lg:order-2 mt-10 lg:mt-0">
                     {[
-                        { icon: Zap, color: "text-orange-500", bg: "bg-orange-100", title: "Fast", desc: "Speed of culture" },
-                        { icon: Smartphone, color: "text-emerald-500", bg: "bg-emerald-100", title: "Mobile", desc: "Optimized Layout" },
-                        { icon: Heart, color: "text-pink-500", bg: "bg-pink-100", title: "Passion", desc: "Made with love" },
-                        { icon: Shield, color: "text-blue-500", bg: "bg-blue-100", title: "Secure", desc: "Best practices" },
-                        { icon: Layers, color: "text-purple-500", bg: "bg-purple-100", title: "Scale", desc: "Ready to grow" },
+                        { icon: Zap, color: "text-orange-500", bg: "bg-orange-100", title: "Fast", desc: "Built for speed" },
+                        { icon: Smartphone, color: "text-emerald-500", bg: "bg-emerald-100", title: "Mobile", desc: "Responsive first" },
+                        { icon: Heart, color: "text-pink-500", bg: "bg-pink-100", title: "Crafted", desc: "Pixel-perfect" },
+                        { icon: Shield, color: "text-blue-500", bg: "bg-blue-100", title: "Secure", desc: "Industry standard" },
+                        { icon: Layers, color: "text-purple-500", bg: "bg-purple-100", title: "Scale", desc: "Grows with you" },
                     ].map((card, i) => {
                         // Fan Logic: Wider spread (-30deg to +30deg)
                         const rotation = -30 + (i * 15);
                         const xOffset = (i - 2) * 40; // Horizontal spread
 
+                        // Mobile Logic: Reduce spread
+                        const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+                        // Note: JS window check in render might cause hydration mismatch. 
+                        // Better to rely on CSS or Media Queries, but for inline framer motion styles, we can use simple constants that likely won't break heavily or just reduce values generally.
+
+                        // Let's us standard responsive variants or just smaller hardcoded values that work for both if possible.
+                        // Actually, on mobile, a fan is hard to see. 
+
                         return (
                             <motion.div
                                 key={i}
-                                className="absolute w-[240px] h-[320px] bg-white rounded-3xl shadow-2xl flex flex-col items-center justify-center p-6 text-center border border-black/5 origin-bottom"
-                                style={{
-                                    zIndex: i * 10,
-                                    rotate: rotation,
-                                    x: xOffset,
-                                }}
+                                className="absolute w-[220px] h-[300px] md:w-[240px] md:h-[320px] bg-white rounded-3xl shadow-2xl flex flex-col items-center justify-center p-6 text-center border border-black/5 origin-bottom"
                                 initial={{ opacity: 0, y: 100 }}
-                                whileInView={{ opacity: 1, y: 0 }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                    rotate: rotation, // We can keep rotation but maybe scale it down with CSS classes if needed, but Motion handles it inline.
+                                    x: xOffset
+                                }}
                                 viewport={{ once: true }}
                                 whileHover={{
                                     y: -60,
@@ -81,6 +89,11 @@ export function WhyOnlinein() {
                                     rotate: 0,
                                     zIndex: 100,
                                     boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                                }}
+                                style={{
+                                    zIndex: i * 10,
+                                    // For mobile we might want less spread. But hard to do conditionally in map without hooks.
+                                    // Let's rely on the container centering.
                                 }}
                                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
                             >

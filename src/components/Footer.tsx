@@ -25,10 +25,12 @@ export function Footer() {
             <div className="container mx-auto px-4 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p>© 2026 Onlinein. Crafted by Future Innovators.</p>
 
-                <div className="flex gap-6 font-medium">
+                <div className="flex gap-6 font-medium flex-wrap justify-center">
                     <a href="/" onClick={(e) => handleScroll(e, "/")} className="hover:text-white transition-colors">Home</a>
                     <a href="#about-onlinein" onClick={(e) => handleScroll(e, "#about-onlinein")} className="hover:text-white transition-colors">About</a>
                     <a href="#services" onClick={(e) => handleScroll(e, "#services")} className="hover:text-white transition-colors">Services</a>
+                    <a href="#work-process" onClick={(e) => handleScroll(e, "#work-process")} className="hover:text-white transition-colors">Process</a>
+                    <a href="#why-onlinein" onClick={(e) => handleScroll(e, "#why-onlinein")} className="hover:text-white transition-colors">Why Us</a>
                     <a href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="hover:text-white transition-colors">Contact</a>
                 </div>
             </div>

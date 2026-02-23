@@ -11,6 +11,7 @@ import { WhyOnlinein } from "@/components/WhyOnlinein";
 import { WorkProcess } from "@/components/WorkProcess";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { ChatWidget } from "@/components/ChatWidget";
 
 import { AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
@@ -76,11 +77,7 @@ export default function Home() {
             <Footer />
           </div>
 
-          {/* Floating Join Button */}
-          <a href="#join" className="fixed bottom-8 right-8 z-50 bg-black/80 backdrop-blur-lg px-6 py-4 rounded-full flex items-center gap-3 border border-white/10 hover:scale-110 transition-transform duration-300 group">
-            <span className="font-bold text-sm">Join</span>
-            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-purple-500 animate-pulse" />
-          </a>
+          <ChatWidget />
 
         </>
       )}

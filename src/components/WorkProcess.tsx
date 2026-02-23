@@ -4,20 +4,20 @@ import { motion } from "motion/react";
 import { MessageSquare, PenTool, CheckCircle, Rocket } from "lucide-react";
 
 const steps = [
-    { id: 1, title: "Tell Us Your Idea", desc: "Share your vision & goals", icon: MessageSquare },
-    { id: 2, title: "We Design & Build", desc: "Trendy, clean, and functional", icon: PenTool },
-    { id: 3, title: "Review & Improve", desc: "We refine it together", icon: CheckCircle },
-    { id: 4, title: "Launch Online", desc: "Your business goes live", icon: Rocket },
+    { id: 1, title: "Share Your Vision", desc: "Tell us your goals and pain points", icon: MessageSquare },
+    { id: 2, title: "We Build It", desc: "High-impact design + AI workflows", icon: PenTool },
+    { id: 3, title: "Optimize & Test", desc: "Fine-tuned for peak performance", icon: CheckCircle },
+    { id: 4, title: "Launch & Scale", desc: "Your system runs on auto-pilot", icon: Rocket },
 ];
 
 export function WorkProcess() {
     return (
-        <section className="min-h-screen bg-[#E5B895] py-20 flex items-center relative overflow-hidden">
+        <section className="min-h-screen bg-[#E5B895] py-20 flex flex-col justify-center relative overflow-hidden">
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-black via-transparent to-transparent" />
 
             <div className="container mx-auto px-4 md:px-12 h-full flex flex-col justify-center relative z-10">
                 <motion.div
-                    className="text-center mb-20"
+                    className="text-center mb-12 md:mb-20 shrink-0"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -25,14 +25,15 @@ export function WorkProcess() {
                     <h2 className="text-[10vw] lg:text-[80px] font-black uppercase leading-none mb-6">
                         How It <span className="text-white">Works</span>
                     </h2>
-                    <p className="text-xl opacity-90">Simple steps to get your brand online.</p>
+                    <p className="text-xl opacity-90">From idea to fully automated — in 4 simple steps</p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {/* Mobile: Horizontal Scroll | Desktop: Grid */}
+                <div className="flex overflow-x-auto gap-4 pb-8 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8 md:pb-0 snap-x snap-mandatory scrollbar-hide">
                     {steps.map((step, i) => (
                         <motion.div
                             key={step.id}
-                            className="bg-white/5 border border-white/10 rounded-3xl p-8 relative overflow-hidden group hover:bg-white/10 transition-all duration-300"
+                            className="bg-white/5 border border-white/10 rounded-3xl p-8 relative overflow-hidden group hover:bg-white/10 transition-all duration-300 min-w-[85vw] md:min-w-0 snap-center"
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}

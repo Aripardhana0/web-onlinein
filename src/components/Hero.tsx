@@ -16,11 +16,11 @@ export function Hero() {
     const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
     return (
-        <section ref={containerRef} className="relative min-h-screen flex items-center bg-[#F4793A] overflow-hidden px-4 md:px-12 pt-24 md:pt-0">
+        <section ref={containerRef} className="relative min-h-[100dvh] flex items-center bg-[#F4793A] overflow-hidden px-4 md:px-12 pt-28 pb-24 md:py-0">
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 items-center h-full">
 
                 {/* Physics Animation - Left */}
-                <div className="relative w-full h-[50vh] md:h-[80vh] flex items-center justify-center order-1">
+                <div className="relative w-full h-[40vh] md:h-[80vh] flex items-center justify-center order-1 mt-8 md:mt-0">
                     <FallingText />
                 </div>
 
@@ -44,9 +44,9 @@ export function Hero() {
                         initial={{ opacity: 0, x: -30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4, type: "spring" }}
-                        className="text-[14vw] md:text-[90px] font-black leading-[1] tracking-[0.05em] uppercase mb-6 w-full"
+                        className="text-[10vw] md:text-[70px] lg:text-[80px] font-black leading-[1.05] tracking-[0.02em] uppercase mb-8 w-full"
                     >
-                        Turn Your <br /> Business <br /> <span className="text-white">Online.</span>
+                        Go Online & <br /> <span className="text-white">Automate Your Business</span>
                     </motion.h1>
 
                     {/* Subheadline - Widened */}
@@ -54,9 +54,9 @@ export function Hero() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 0.9 }}
                         transition={{ delay: 0.6 }}
-                        className="text-lg md:text-xl md:max-w-xl mb-10 leading-relaxed font-medium"
+                        className="text-base md:text-xl md:max-w-xl mb-10 leading-relaxed font-medium"
                     >
-                        We help brands grow online through trendy landing pages, company profiles, and marketplaces — built by young, creative minds who follow the latest digital trends.
+                        We build high-converting websites and AI systems that run your business 24/7.
                     </motion.p>
 
                     {/* CTA Buttons */}
